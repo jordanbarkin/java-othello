@@ -3,7 +3,8 @@ import java.util.Scanner;
 public class GameTester {
 	public static void main(String[] args) throws InvalidMoveException {
 		Game game = new Game();
-		boolean blackTurn = true;
+		boolean blackTurn = false;
+		final int depth = 10;
 		Scanner in = new Scanner(System.in);
 		int gameMode = 0; // 1, 2, or 3
 
@@ -64,7 +65,7 @@ public class GameTester {
 					if(player == Player.WHITE)	
 						currentMove = new Move(moveDirection, player, game);
 					else {
-						currentMove = OthelloAI.computeBestMove(game, player);
+						currentMove = OthelloAI.computeBestMove(game, player, depth);
 						System.out.print(player + ": " + Move.getStringFromCoordinate(currentMove.coordinate));
 					}
 					currentMove.execute(game);
@@ -89,7 +90,7 @@ public class GameTester {
 		else if(gameMode == 3) {
 			while(!game.ended) {
 				Player player = blackTurn? Player.BLACK:Player.WHITE;
-				Move currentMove = OthelloAI.computeBestMove(game, player);
+				Move currentMove = OthelloAI.computeBestMove(game, player, depth);
 				System.out.print(player + ": " + Move.getStringFromCoordinate(currentMove.coordinate));
 				try {
 					currentMove.execute(game);

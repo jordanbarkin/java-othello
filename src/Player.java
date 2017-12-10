@@ -1,7 +1,5 @@
-
 public enum Player {
 	WHITE,
-
 	BLACK;
 	
 	public  Player opponent() {

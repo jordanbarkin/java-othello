@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class NegaMax {
 	public static AISearchResult search(Game game, Player player, int alpha, int beta, int depth) throws InvalidMoveException {
 		if(depth<=0 || game.ended)
-			return new AISearchResult(null, heuristic(game, player));
+			return new AISearchResult(null, Heuristic.heuristic(game, player));
 		else {
 			ArrayList<Move> possibleMoves = game.getLegalMoveArray(player);
 			AISearchResult best = new AISearchResult(null, alpha);
@@ -22,7 +22,6 @@ public class NegaMax {
 						break;
 					} 
 				}
-
 				else {
 					best = search(game.deepCopy(), player.opponent(), -beta, -alpha, depth-1).negated();
 				}
@@ -46,9 +45,6 @@ public class NegaMax {
 
 	}
 
-	public static int heuristic(Game game, Player player) { //modify this and this alone.
-		return game.getScore(player);
-	}
 
 
 }
