@@ -95,12 +95,12 @@ public class Game {
 	}
 	
 	
-	private void updateEnded(Player player) {
+	public void updateEnded(Player player) {
 		this.ended = getLegalMoveArray(player).size() == 0;
 	}
 
 	public ArrayList<Move> getLegalMoveArray(Player player){ 
-		ArrayList<Move> results = new ArrayList<Move>();
+		ArrayList<Move> results = new ArrayList<Move>(64);
 
 		for(int i = 0; i<SIZE; i++) {
 			for(int j = 0; j<SIZE; j++)	{
