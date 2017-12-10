@@ -7,7 +7,8 @@ public class Game {
 	protected int whiteScore, blackScore;
 	protected ArrayList<Move> previousMoves;
 	protected ArrayList<Tile[][]> previousStates;
-
+	protected int moveCount;
+	
 	Tile[][] board = new Tile[SIZE][SIZE];
 
 	public Game() {
@@ -56,7 +57,7 @@ public class Game {
 
 	public String toString() {	
 		StringBuilder result = new StringBuilder();
-		result.append("\n" +  "    0 1 2 3 4 5 6 7" + "\n");
+		result.append("\n" + "\n" +  "    0 1 2 3 4 5 6 7" + "\n");
 		result.append("    A B C D E F G H" + "\n");
 
 		int rowMarker = 1;
@@ -77,6 +78,10 @@ public class Game {
 		}
 		computeScores();
 		result.append("\n" + "White: " + this.whiteScore + " —— Black:" + this.blackScore);
+		result.append("\n" + "Move number: " + (moveCount +1));
+		result.append("\n");
+		result.append("________________________________________" + "\n");
+
 		return result.toString();
 	}
 

@@ -65,7 +65,7 @@ public class GameTester {
 						currentMove = new Move(moveDirection, player, game);
 					else {
 						currentMove = OthelloAI.computeBestMove(game, player);
-						System.out.print(Move.getStringFromCoordinate(currentMove.coordinate));
+						System.out.print(player + ": " + Move.getStringFromCoordinate(currentMove.coordinate));
 					}
 					currentMove.execute(game);
 					System.out.println(game);
@@ -90,7 +90,7 @@ public class GameTester {
 			while(!game.ended) {
 				Player player = blackTurn? Player.BLACK:Player.WHITE;
 				Move currentMove = OthelloAI.computeBestMove(game, player);
-				System.out.print(Move.getStringFromCoordinate(currentMove.coordinate));
+				System.out.print(player + ": " + Move.getStringFromCoordinate(currentMove.coordinate));
 				try {
 					currentMove.execute(game);
 					System.out.println(game);
@@ -102,13 +102,21 @@ public class GameTester {
 				catch (NumberFormatException e) {
 					System.out.println("Invalid entry. Try again.");
 				}
-//				catch (IndexOutOfBoundsException e) {
-//					System.out.println("Invalid entry. Try again.");
-//				}
+				catch (IndexOutOfBoundsException e) {
+					System.out.println("Invalid entry. Try again.");
+				}
 
 			}
-			System.out.println(game);
 			System.out.println("Game ended");
+			System.out.println("Final score: " + "White: " + game.whiteScore + " —— Black:" + game.blackScore);
+			
+			if(game.whiteScore > game.blackScore)
+				System.out.println("White wins!");
+			else if(game.whiteScore < game.blackScore)
+				System.out.println("Black wins!");
+			else
+				System.out.println("Tie game!");
+			
 			in.close();
 		}
 

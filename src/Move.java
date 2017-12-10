@@ -90,6 +90,7 @@ public class Move {
 		if(this.isLegal == false)
 			throw new InvalidMoveException();
 		else {
+			game.moveCount++;
 			game.previousStates.add(Game.deepCopyBoard(game.board));
 
 			if(game.board[coordinate.y][coordinate.x] == Tile.EMPTY) {
@@ -146,7 +147,8 @@ public class Move {
 
 			game.board[this.coordinate.y][this.coordinate.x] = this.tileColor;
 			game.previousMoves.add(this);
-			game.updateEnded(player);
+			Player otherPlayer = this.player == Player.WHITE? Player.BLACK : Player.WHITE;
+			game.updateEnded(otherPlayer);
 		}
 	}
 }
