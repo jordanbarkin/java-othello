@@ -33,7 +33,6 @@ public class Move {
 		int yCoord = input.x+1;
 		char y = (char) (yCoord + 'a' -1);
 		return xCoord + "" + y;
-
 	}
 
 	private boolean computeLegality(Game game) {

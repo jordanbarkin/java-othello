@@ -94,7 +94,7 @@ public class Game {
 
 	}
 	
-	public Game deepCopyGame()  {
+	public Game deepCopy()  {
 		Game newGame = new Game(this);
 		return newGame;
 	}
@@ -102,6 +102,10 @@ public class Game {
 	
 	public void updateEnded(Player player) {
 		this.ended = getLegalMoveArray(player).size() == 0;
+	}
+	
+	public int getScore(Player player) {
+		return player == Player.BLACK? blackScore : whiteScore;
 	}
 
 	public ArrayList<Move> getLegalMoveArray(Player player){ 
