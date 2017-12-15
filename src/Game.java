@@ -66,9 +66,9 @@ public class Game {
 			for(Tile tile : row) {
 				char current;
 				if(tile == Tile.BLACK)
-					current = 'B';
+					current = '○';//'B';
 				else if(tile == Tile.WHITE)
-					current = 'W';
+					current = '●';//'W';
 				else
 					current = ' ';
 				result.append("|" + current);
