@@ -26,6 +26,11 @@ public class GameTester {
 		if(gameMode == 1) {
 			while(!game.ended) {
 				Player player = blackTurn? Player.BLACK:Player.WHITE;
+				if(game.getLegalMoveArray(player).size() == 0) {
+					blackTurn = !blackTurn;
+					continue;
+				}
+
 				if(player == Player.WHITE)
 					System.out.println("White move:");
 				else
@@ -55,6 +60,10 @@ public class GameTester {
 		else if(gameMode == 2) {
 			while(!game.ended) {
 				Player player = blackTurn? Player.BLACK:Player.WHITE;
+				if(game.getLegalMoveArray(player).size() == 0) {
+					blackTurn = !blackTurn;
+					continue;
+				}
 				String moveDirection = "";
 				if(player == Player.WHITE) {
 					System.out.println("White move:");
@@ -90,6 +99,10 @@ public class GameTester {
 		else if(gameMode == 3) {
 			while(!game.ended) {
 				Player player = blackTurn? Player.BLACK:Player.WHITE;
+				if(game.getLegalMoveArray(player).size() == 0) {
+					blackTurn = !blackTurn;
+					continue;
+				}
 				Move currentMove = OthelloAI.computeBestMove(game, player, depth);
 				System.out.print(player + ": " + Move.getStringFromCoordinate(currentMove.coordinate));
 				try {

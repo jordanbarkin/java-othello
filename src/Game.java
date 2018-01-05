@@ -100,8 +100,8 @@ public class Game {
 	}
 	
 	
-	public void updateEnded(Player player) {
-		this.ended = getLegalMoveArray(player).size() == 0;
+	public void updateEnded(Player playerA, Player playerB) {
+		this.ended = getLegalMoveArray(playerA).size() == 0 && getLegalMoveArray(playerB).size() == 0;
 	}
 	
 	public int getScore(Player player) {

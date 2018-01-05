@@ -150,7 +150,7 @@ public class Move {
 			game.board[this.coordinate.y][this.coordinate.x] = this.tileColor;
 			game.previousMoves.add(this);
 			Player otherPlayer = this.player == Player.WHITE? Player.BLACK : Player.WHITE;
-			game.updateEnded(otherPlayer);
+			game.updateEnded(otherPlayer, player);
 		}
 	}
 }
