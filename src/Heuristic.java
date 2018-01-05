@@ -3,18 +3,18 @@ public class Heuristic {
 	public static int heuristic(Game game, Player player) { //modify this and this alone.
 		Tile[][] board = game.board;
 		int score = 0;
-
+		Tile playerTile = player == Player.BLACK? Tile.BLACK : Tile.WHITE;
 		//diagonals
 		boolean hasDownDiagonal = true;
 		for(int i = 0; i<board.length; i++) {
-			if(!board[i][i].equals(player)) {
+			if(!board[i][i].equals(playerTile)) {
 				hasDownDiagonal = false;
 			}
 		}
 
 		boolean hasUpDiagonal = true;
 		for(int i = 0; i<board.length; i++) {
-			if(!board[i][board.length-1-i].equals(player)) {
+			if(!board[i][board.length-1-i].equals(playerTile)) {
 				hasUpDiagonal = false;
 			}
 		}
@@ -26,7 +26,7 @@ public class Heuristic {
 		for(int i = 0; i<board.length; i++) {
 			boolean hasRow = true;
 			for(int j = 0; j<board[i].length; j++) {
-				if(!board[i][j].equals(player)) {
+				if(!board[i][j].equals(playerTile)) {
 					hasRow = false;
 				} else if(Math.abs(board.length-i)>i){
 					score += (i+1)%2*(Math.max((5-i),0));
@@ -41,7 +41,7 @@ public class Heuristic {
 		for(int i = 0; i<board.length; i++) {
 			boolean hasCol = true;
 			for (int j = 0; j < board[i].length; j++) {
-				if (!board[j][i].equals(player)) {
+				if (!board[j][i].equals(playerTile)) {
 					hasCol = false;
 				}
 			}
@@ -54,5 +54,4 @@ public class Heuristic {
 		score+=game.getScore(player)*3;
 		return score;
 	}
-
 }

@@ -10,6 +10,5 @@ public class BoardLocation {
 	
 	public String toString() {
 		return "(" + this.x + "," + this.y + ")";
-	}
-	
+	}	
 }

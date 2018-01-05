@@ -82,11 +82,11 @@ public class Move {
 			}
 		}
 		return result;      
-    
+
 	}
 
 	public void execute(Game game) throws InvalidMoveException {
-		if(this.isLegal == false)
+		if(!this.isLegal)
 			throw new InvalidMoveException();
 		else {
 			game.moveCount++;
@@ -135,9 +135,12 @@ public class Move {
 										posX -= x;
 										posY -= y;
 										current = game.board[posY][posX];
+
+
 									}
+									found = true;
+
 								}
-								found = true;
 							}
 						}
 					}

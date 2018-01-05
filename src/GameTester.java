@@ -4,7 +4,7 @@ public class GameTester {
 	public static void main(String[] args) throws InvalidMoveException {
 		Game game = new Game();
 		boolean blackTurn = false;
-		final int depth = 10;
+		final int depth = 5;
 		Scanner in = new Scanner(System.in);
 		int gameMode = 0; // 1, 2, or 3
 
